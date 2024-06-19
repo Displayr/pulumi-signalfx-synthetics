@@ -1,0 +1,43 @@
+{
+    "compilerOptions": {
+        "outDir": "bin",
+        "target": "es2016",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "declaration": true,
+        "sourceMap": true,
+        "stripInternal": true,
+        "experimentalDecorators": true,
+        "noFallthroughCasesInSwitch": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true
+    },
+    "files": [
+        "config/index.ts",
+        "config/vars.ts",
+        "index.ts",
+        "provider.ts",
+        "syntheticsApiV2Check.ts",
+        "syntheticsBrowserV2Check.ts",
+        "syntheticsCheck.ts",
+        "syntheticsCreateApiCheckV2.ts",
+        "syntheticsCreateBrowserCheck.ts",
+        "syntheticsCreateBrowserCheckV2.ts",
+        "syntheticsCreateHttpCheck.ts",
+        "syntheticsCreateHttpCheckV2.ts",
+        "syntheticsCreateLocationV2.ts",
+        "syntheticsCreatePortCheckV2.ts",
+        "syntheticsCreateVariableV2.ts",
+        "syntheticsDevicesV2Check.ts",
+        "syntheticsHttpV2Check.ts",
+        "syntheticsLocationV2Check.ts",
+        "syntheticsLocationsV2Check.ts",
+        "syntheticsPortV2Check.ts",
+        "syntheticsVariableV2Check.ts",
+        "syntheticsVariablesV2Check.ts",
+        "types/index.ts",
+        "types/input.ts",
+        "types/output.ts",
+        "utilities.ts"
+    ]
+}

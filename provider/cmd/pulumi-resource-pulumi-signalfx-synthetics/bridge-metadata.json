@@ -1,0 +1,607 @@
+{
+    "auto-aliasing": {
+        "resources": {
+            "synthetics_create_api_check_v2": {
+                "current": "synthetics:index/syntheticsCreateApiCheckV2:SyntheticsCreateApiCheckV2",
+                "fields": {
+                    "test": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "location_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "requests": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "configuration": {
+                                                "maxItemsOne": false
+                                            },
+                                            "setup": {
+                                                "maxItemsOne": false
+                                            },
+                                            "validations": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "synthetics_create_browser_check": {
+                "current": "synthetics:index/syntheticsCreateBrowserCheck:SyntheticsCreateBrowserCheck",
+                "fields": {
+                    "blackout_periods": {
+                        "maxItemsOne": false
+                    },
+                    "browser": {
+                        "maxItemsOne": false
+                    },
+                    "check_connection": {
+                        "maxItemsOne": false
+                    },
+                    "cookies": {
+                        "maxItemsOne": false
+                    },
+                    "dns_overrides": {
+                        "maxItemsOne": false
+                    },
+                    "excluded_files": {
+                        "maxItemsOne": false
+                    },
+                    "http_request_headers": {
+                        "maxItemsOne": false
+                    },
+                    "integrations": {
+                        "maxItemsOne": false
+                    },
+                    "javascript_files": {
+                        "maxItemsOne": false
+                    },
+                    "locations": {
+                        "maxItemsOne": false
+                    },
+                    "notifications": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "escalations": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "notification_window": {
+                                                "maxItemsOne": false
+                                            },
+                                            "notify_who": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "links": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "notification_windows": {
+                                    "maxItemsOne": false
+                                },
+                                "notify_who": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "links": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "steps": {
+                        "maxItemsOne": false
+                    },
+                    "success_criteria": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "threshold_monitors": {
+                        "maxItemsOne": false
+                    },
+                    "viewport": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "synthetics_create_browser_check_v2": {
+                "current": "synthetics:index/syntheticsCreateBrowserCheckV2:SyntheticsCreateBrowserCheckV2",
+                "fields": {
+                    "test": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "advanced_settings": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "authentication": {
+                                                "maxItemsOne": false
+                                            },
+                                            "cookies": {
+                                                "maxItemsOne": false
+                                            },
+                                            "headers": {
+                                                "maxItemsOne": false
+                                            },
+                                            "host_overrides": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "location_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "transactions": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "steps": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "options": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "synthetics_create_http_check": {
+                "current": "synthetics:index/syntheticsCreateHttpCheck:SyntheticsCreateHttpCheck",
+                "fields": {
+                    "blackout_periods": {
+                        "maxItemsOne": false
+                    },
+                    "check_connection": {
+                        "maxItemsOne": false
+                    },
+                    "http_request_headers": {
+                        "maxItemsOne": false
+                    },
+                    "integrations": {
+                        "maxItemsOne": false
+                    },
+                    "locations": {
+                        "maxItemsOne": false
+                    },
+                    "notifications": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "escalations": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "notification_window": {
+                                                "maxItemsOne": false
+                                            },
+                                            "notify_who": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "links": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "notification_windows": {
+                                    "maxItemsOne": false
+                                },
+                                "notify_who": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "links": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "success_criteria": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "synthetics_create_http_check_v2": {
+                "current": "synthetics:index/syntheticsCreateHttpCheckV2:SyntheticsCreateHttpCheckV2",
+                "fields": {
+                    "test": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "headers": {
+                                    "maxItemsOne": false
+                                },
+                                "location_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "synthetics_create_location_v2": {
+                "current": "synthetics:index/syntheticsCreateLocationV2:SyntheticsCreateLocationV2",
+                "fields": {
+                    "location": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "synthetics_create_port_check_v2": {
+                "current": "synthetics:index/syntheticsCreatePortCheckV2:SyntheticsCreatePortCheckV2",
+                "fields": {
+                    "test": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "location_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "synthetics_create_variable_v2": {
+                "current": "synthetics:index/syntheticsCreateVariableV2:SyntheticsCreateVariableV2",
+                "fields": {
+                    "variable": {
+                        "maxItemsOne": false
+                    }
+                }
+            }
+        },
+        "datasources": {
+            "synthetics_api_v2_check": {
+                "current": "synthetics:index/syntheticsApiV2Check:syntheticsApiV2Check",
+                "fields": {
+                    "test": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "device": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "network_connection": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "location_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "requests": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "configuration": {
+                                                "maxItemsOne": false
+                                            },
+                                            "setup": {
+                                                "maxItemsOne": false
+                                            },
+                                            "validations": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "synthetics_browser_v2_check": {
+                "current": "synthetics:index/syntheticsBrowserV2Check:syntheticsBrowserV2Check",
+                "fields": {
+                    "test": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "advanced_settings": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "authentication": {
+                                                "maxItemsOne": false
+                                            },
+                                            "cookies": {
+                                                "maxItemsOne": false
+                                            },
+                                            "headers": {
+                                                "maxItemsOne": false
+                                            },
+                                            "host_overrides": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "business_transactions": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "steps": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "options": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "device": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "network_connection": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "location_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "transactions": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "steps": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "options": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "synthetics_check": {
+                "current": "synthetics:index/syntheticsCheck:syntheticsCheck",
+                "fields": {
+                    "blackout_periods": {
+                        "maxItemsOne": false
+                    },
+                    "browser": {
+                        "maxItemsOne": false
+                    },
+                    "check_connection": {
+                        "maxItemsOne": false
+                    },
+                    "cookies": {
+                        "maxItemsOne": false
+                    },
+                    "dns_overrides": {
+                        "maxItemsOne": false
+                    },
+                    "excluded_files": {
+                        "maxItemsOne": false
+                    },
+                    "http_request_headers": {
+                        "maxItemsOne": false
+                    },
+                    "integrations": {
+                        "maxItemsOne": false
+                    },
+                    "javascript_files": {
+                        "maxItemsOne": false
+                    },
+                    "links": {
+                        "maxItemsOne": false
+                    },
+                    "locations": {
+                        "maxItemsOne": false
+                    },
+                    "notifications": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "escalations": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "notification_window": {
+                                                "maxItemsOne": false
+                                            },
+                                            "notify_who": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "links": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "notification_windows": {
+                                    "maxItemsOne": false
+                                },
+                                "notify_who": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "links": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "status": {
+                        "maxItemsOne": false
+                    },
+                    "steps": {
+                        "maxItemsOne": false
+                    },
+                    "success_criteria": {
+                        "maxItemsOne": false
+                    },
+                    "tags": {
+                        "maxItemsOne": false
+                    },
+                    "threshold_monitors": {
+                        "maxItemsOne": false
+                    },
+                    "viewport": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "synthetics_devices_v2_check": {
+                "current": "synthetics:index/syntheticsDevicesV2Check:syntheticsDevicesV2Check",
+                "fields": {
+                    "devices": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "network_connection": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "synthetics_http_v2_check": {
+                "current": "synthetics:index/syntheticsHttpV2Check:syntheticsHttpV2Check",
+                "fields": {
+                    "test": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "headers": {
+                                    "maxItemsOne": false
+                                },
+                                "location_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "synthetics_location_v2_check": {
+                "current": "synthetics:index/syntheticsLocationV2Check:syntheticsLocationV2Check",
+                "fields": {
+                    "location": {
+                        "maxItemsOne": false
+                    },
+                    "meta": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "active_test_ids": {
+                                    "maxItemsOne": false
+                                },
+                                "paused_test_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "synthetics_locations_v2_check": {
+                "current": "synthetics:index/syntheticsLocationsV2Check:syntheticsLocationsV2Check",
+                "fields": {
+                    "default_location_ids": {
+                        "maxItemsOne": false
+                    },
+                    "locations": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "synthetics_port_v2_check": {
+                "current": "synthetics:index/syntheticsPortV2Check:syntheticsPortV2Check",
+                "fields": {
+                    "test": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "location_ids": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "synthetics_variable_v2_check": {
+                "current": "synthetics:index/syntheticsVariableV2Check:syntheticsVariableV2Check",
+                "fields": {
+                    "variable": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "synthetics_variables_v2_check": {
+                "current": "synthetics:index/syntheticsVariablesV2Check:syntheticsVariablesV2Check",
+                "fields": {
+                    "variables": {
+                        "maxItemsOne": false
+                    }
+                }
+            }
+        }
+    },
+    "auto-settings": {}
+}

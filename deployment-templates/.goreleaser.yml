@@ -5,7 +5,7 @@ before:
   hooks:
     - make tfgen
 builds:
-  - binary: pulumi-resource-xyz
+  - binary: pulumi-resource-pulumi-signalfx-synthetics
     dir: provider
     env:
       - CGO_ENABLED=0
@@ -18,8 +18,8 @@ builds:
       - linux
     ldflags:
       # The line below MUST align with the module in current provider/go.mod
-      - -X github.com/pulumi/pulumi-xyz/provider/pkg/version.Version={{.Tag }}
-    main: ./cmd/pulumi-resource-xyz/
+      - -X github.com/yuft/pulumi-signalfx-synthetics/provider/pkg/version.Version={{.Tag }}
+    main: ./cmd/pulumi-resource-pulumi-signalfx-synthetics/
 changelog:
   skip: true
 release:

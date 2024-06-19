@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-package xyz
+package synthetics
 
 import (
 	"path"
@@ -24,22 +24,20 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 
-	// Replace this provider with the provider you are bridging.
-	xyz "github.com/iwahbe/terraform-provider-xyz/provider"
-
-	"github.com/pulumi/pulumi-xyz/provider/pkg/version"
+	"github.com/splunk/terraform-provider-synthetics/synthetics"
+	"github.com/yuft/pulumi-signalfx-synthetics/provider/pkg/version"
 )
 
 // all of the token components used below.
 const (
 	// This variable controls the default name of the package in the package
 	// registries for nodejs and python:
-	mainPkg = "xyz"
+	mainPkg = "synthetics"
 	// modules:
-	mainMod = "index" // the xyz module
+	mainMod = "index" // the pulumi-signalfx-synthetics module
 )
 
-//go:embed cmd/pulumi-resource-xyz/bridge-metadata.json
+//go:embed cmd/pulumi-resource-pulumi-signalfx-synthetics/bridge-metadata.json
 var metadata []byte
 
 // Provider returns additional overlaid schema and metadata associated with the provider.
@@ -78,17 +76,17 @@ func Provider() tfbridge.ProviderInfo {
 		//
 		//    - Replace `shimv2.NewProvider` with `pfbridge.ShimProvider`.
 		//
-		//    - In provider/cmd/pulumi-tfgen-xyz/main.go, replace the
+		//    - In provider/cmd/pulumi-tfgen-pulumi-signalfx-synthetics/main.go, replace the
 		//      "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen" import with
 		//      "github.com/pulumi/pulumi-terraform-bridge/pf/tfgen". Remove the `version.Version`
 		//      argument to `tfgen.Main`.
 		//
-		//    - In provider/cmd/pulumi-resource-xyz/main.go, replace the
+		//    - In provider/cmd/pulumi-resource-pulumi-signalfx-synthetics/main.go, replace the
 		//      "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge" import with
 		//      "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge". Replace the arguments to the
 		//      `tfbridge.Main` so it looks like this:
 		//
-		//      	tfbridge.Main(context.Background(), "xyz", xyz.Provider(),
+		//      	tfbridge.Main(context.Background(), "pulumi-signalfx-synthetics", pulumi-signalfx-synthetics.Provider(),
 		//			tfbridge.ProviderMetadata{PulumiSchema: pulumiSchema})
 		//
 		//   Detailed instructions can be found at
@@ -96,7 +94,7 @@ func Provider() tfbridge.ProviderInfo {
 		//   After that, you can proceed as normal.
 		//
 		// This is where you give the bridge a handle to the upstream terraform provider. SDKv2
-		// convention is to have a function at "github.com/iwahbe/terraform-provider-xyz/provider".New
+		// convention is to have a function at "github.com/iwahbe/terraform-provider-pulumi-signalfx-synthetics/provider".New
 		// which takes a version and produces a factory function. The provider you are bridging may
 		// not do that. You will need to find the function (generally called in upstream's main.go)
 		// that produces a:
@@ -106,16 +104,16 @@ func Provider() tfbridge.ProviderInfo {
 		// - "github.com/hashicorp/terraform-plugin-framework/provider".Provider (for plugin-framework)
 		//
 		//nolint:lll
-		P: shimv2.NewProvider(xyz.New(version.Version)()),
+		P: shimv2.NewProvider(synthetics.Provider()),
 
-		Name:    "xyz",
+		Name:    "synthetics",
 		Version: version.Version,
 		// DisplayName is a way to be able to change the casing of the provider name when being
 		// displayed on the Pulumi registry
-		DisplayName: "",
+		DisplayName: "pulumi-signalfx-synthetics",
 		// Change this to your personal name (or a company name) that you would like to be shown in
 		// the Pulumi Registry if this package is published there.
-		Publisher: "abc",
+		Publisher: "yuft",
 		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
 		// if this package is published there.
 		//
@@ -126,27 +124,50 @@ func Provider() tfbridge.ProviderInfo {
 		// for use in Pulumi programs
 		// e.g https://github.com/org/pulumi-provider-name/releases/
 		PluginDownloadURL: "",
-		Description:       "A Pulumi package for creating and managing xyz cloud resources.",
+		Description:       "A Pulumi package for creating and managing pulumi-signalfx-synthetics cloud resources.",
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:   []string{"abc", "xyz", "category/cloud"},
+		Keywords:   []string{"yuft", "pulumi-signalfx-synthetics", "category/cloud"},
 		License:    "Apache-2.0",
 		Homepage:   "https://www.pulumi.com",
-		Repository: "https://github.com/pulumi/pulumi-xyz",
+		Repository: "https://github.com/yuft/pulumi-signalfx-synthetics",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this should
 		// match the TF provider module's require directive, not any replace directives.
-		GitHubOrg:    "",
+		GitHubOrg:    "splunk",
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
-		Config:       map[string]*tfbridge.SchemaInfo{
-			// Add any required configuration here, or remove the example below if
-			// no additional points are required.
-			// "region": {
-			// 	Type: tfbridge.MakeType("region", "Region"),
-			// 	Default: &tfbridge.DefaultInfo{
-			// 		EnvVars: []string{"AWS_REGION", "AWS_DEFAULT_REGION"},
-			// 	},
-			// },
+		Config:	map[string]*tfbridge.SchemaInfo{
+			"apikey": {
+				Default: &tfbridge.DefaultInfo{
+					EnvVars: []string{"OBSERVABILITY_API_TOKEN"},
+				},
+			},
+		},
+		Resources: map[string]*tfbridge.ResourceInfo{
+			"synthetics_create_api_check_v2": 		{Tok: tfbridge.MakeResource(mainPkg, mainMod, "SyntheticsCreateApiCheckV2")},
+			"synthetics_create_browser_check": 		{Tok: tfbridge.MakeResource(mainPkg, mainMod, "SyntheticsCreateBrowserCheck")},
+			"synthetics_create_browser_check_v2": 	{
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "SyntheticsCreateBrowserCheckV2"),
+			},
+			"synthetics_create_http_check": 		{Tok: tfbridge.MakeResource(mainPkg, mainMod, "SyntheticsCreateHttpCheck")},
+			"synthetics_create_http_check_v2":      {
+				Tok: tfbridge.MakeResource(mainPkg, mainMod, "SyntheticsCreateHttpCheckV2"),
+			},
+			"synthetics_create_location_v2":       	{Tok: tfbridge.MakeResource(mainPkg, mainMod, "SyntheticsCreateLocationV2")},
+			"synthetics_create_port_check_v2":		{Tok: tfbridge.MakeResource(mainPkg, mainMod, "SyntheticsCreatePortCheckV2")},
+			"synthetics_create_variable_v2":		{Tok: tfbridge.MakeResource(mainPkg, mainMod, "SyntheticsCreateVariableV2")},
+		},
+		DataSources: map[string]*tfbridge.DataSourceInfo{
+			"synthetics_api_v2_check": 				{Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsApiV2Check")},
+			"synthetics_browser_v2_check": 			{Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsBrowserV2Check")},
+			"synthetics_check": 					{Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsCheck")},
+			"synthetics_devices_v2_check": 			{Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsDevicesV2Check")},
+			"synthetics_http_v2_check": 			{Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsHttpV2Check")},
+			"synthetics_location_v2_check": 		{Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsLocationV2Check")},
+			"synthetics_locations_v2_check": 		{Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsLocationsV2Check")},
+			"synthetics_port_v2_check": 			{Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsPortV2Check")},
+			"synthetics_variable_v2_check": 		{Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsVariableV2Check")},
+			"synthetics_variables_v2_check": 		{Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsVariablesV2Check")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
@@ -166,7 +187,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: path.Join(
-				"github.com/pulumi/pulumi-xyz/sdk/",
+				"github.com/yuft/pulumi-signalfx-synthetics/sdk/",
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
 				mainPkg,
@@ -186,7 +207,7 @@ func Provider() tfbridge.ProviderInfo {
 	//
 	// You shouldn't need to override anything, but if you do, use the [tfbridge.ProviderInfo.Resources]
 	// and [tfbridge.ProviderInfo.DataSources].
-	prov.MustComputeTokens(tokens.SingleModule("xyz_", mainMod,
+	prov.MustComputeTokens(tokens.SingleModule("pulumi-signalfx-synthetics_", mainMod,
 		tokens.MakeStandard(mainPkg)))
 
 	prov.MustApplyAutoAliases()
