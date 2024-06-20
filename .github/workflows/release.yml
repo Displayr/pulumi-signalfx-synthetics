@@ -254,8 +254,8 @@ jobs:
         run: |
 
           # DY Hack, update nodejs package.json name to be @displayr/pulumi-signalfx-synthetics
-          jq '.name="@displayr/pulumi-signalfx-synthetics"' ${{github.workspace}}./sdk/nodejs/bin/package.json > /tmp/package.json
-          mv /tmp/package.json${{github.workspace}}./sdk/nodejs/bin/package.json
+          jq '.name="@displayr/pulumi-signalfx-synthetics"' ${{github.workspace}}/sdk/nodejs/bin/package.json > /tmp/package.json
+          mv /tmp/package.json${{github.workspace}}/sdk/nodejs/bin/package.json
 
           ./ci-scripts/ci/publish-tfgen-package ${{ github.workspace }}
     strategy:
