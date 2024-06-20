@@ -270,3 +270,5 @@ name: release
     tags:
       - v*.*.*
       - "!v*.*.*-**"
+    branches:
+      - v*.*.*
