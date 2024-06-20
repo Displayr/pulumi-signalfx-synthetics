@@ -1,4 +1,4 @@
-module github.com/yuft/pulumi-signalfx-synthetics/provider
+module github.com/displayr/pulumi-signalfx-synthetics/provider
 
 go 1.21
 

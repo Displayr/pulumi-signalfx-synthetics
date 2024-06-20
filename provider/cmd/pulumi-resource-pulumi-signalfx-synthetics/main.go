@@ -17,9 +17,9 @@ package main
 import (
 	_ "embed"
 
+	synthetics "github.com/displayr/pulumi-signalfx-synthetics/provider"
+	"github.com/displayr/pulumi-signalfx-synthetics/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	synthetics "github.com/yuft/pulumi-signalfx-synthetics/provider"
-	"github.com/yuft/pulumi-signalfx-synthetics/provider/pkg/version"
 )
 
 //go:embed schema.json

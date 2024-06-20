@@ -24,8 +24,8 @@ import (
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 
+	"github.com/displayr/pulumi-signalfx-synthetics/provider/pkg/version"
 	"github.com/splunk/terraform-provider-synthetics/synthetics"
-	"github.com/yuft/pulumi-signalfx-synthetics/provider/pkg/version"
 )
 
 // all of the token components used below.
@@ -113,7 +113,7 @@ func Provider() tfbridge.ProviderInfo {
 		DisplayName: "pulumi-signalfx-synthetics",
 		// Change this to your personal name (or a company name) that you would like to be shown in
 		// the Pulumi Registry if this package is published there.
-		Publisher: "yuft",
+		Publisher: "displayr",
 		// LogoURL is optional but useful to help identify your package in the Pulumi Registry
 		// if this package is published there.
 		//
@@ -128,15 +128,15 @@ func Provider() tfbridge.ProviderInfo {
 		// category/cloud tag helps with categorizing the package in the Pulumi Registry.
 		// For all available categories, see `Keywords` in
 		// https://www.pulumi.com/docs/guides/pulumi-packages/schema/#package.
-		Keywords:   []string{"yuft", "pulumi-signalfx-synthetics", "category/cloud"},
+		Keywords:   []string{"displayr", "pulumi-signalfx-synthetics", "category/cloud"},
 		License:    "Apache-2.0",
 		Homepage:   "https://www.pulumi.com",
-		Repository: "https://github.com/yuft/pulumi-signalfx-synthetics",
+		Repository: "https://github.com/displayr/pulumi-signalfx-synthetics",
 		// The GitHub Org for the provider - defaults to `terraform-providers`. Note that this should
 		// match the TF provider module's require directive, not any replace directives.
 		GitHubOrg:    "splunk",
 		MetadataInfo: tfbridge.NewProviderMetadata(metadata),
-		Config:	map[string]*tfbridge.SchemaInfo{
+		Config: map[string]*tfbridge.SchemaInfo{
 			"apikey": {
 				Default: &tfbridge.DefaultInfo{
 					EnvVars: []string{"OBSERVABILITY_API_TOKEN"},
@@ -144,30 +144,30 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Resources: map[string]*tfbridge.ResourceInfo{
-			"synthetics_create_api_check_v2": 		{Tok: tfbridge.MakeResource(mainPkg, mainMod, "SyntheticsCreateApiCheckV2")},
-			"synthetics_create_browser_check": 		{Tok: tfbridge.MakeResource(mainPkg, mainMod, "SyntheticsCreateBrowserCheck")},
-			"synthetics_create_browser_check_v2": 	{
+			"synthetics_create_api_check_v2":  {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SyntheticsCreateApiCheckV2")},
+			"synthetics_create_browser_check": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SyntheticsCreateBrowserCheck")},
+			"synthetics_create_browser_check_v2": {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "SyntheticsCreateBrowserCheckV2"),
 			},
-			"synthetics_create_http_check": 		{Tok: tfbridge.MakeResource(mainPkg, mainMod, "SyntheticsCreateHttpCheck")},
-			"synthetics_create_http_check_v2":      {
+			"synthetics_create_http_check": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SyntheticsCreateHttpCheck")},
+			"synthetics_create_http_check_v2": {
 				Tok: tfbridge.MakeResource(mainPkg, mainMod, "SyntheticsCreateHttpCheckV2"),
 			},
-			"synthetics_create_location_v2":       	{Tok: tfbridge.MakeResource(mainPkg, mainMod, "SyntheticsCreateLocationV2")},
-			"synthetics_create_port_check_v2":		{Tok: tfbridge.MakeResource(mainPkg, mainMod, "SyntheticsCreatePortCheckV2")},
-			"synthetics_create_variable_v2":		{Tok: tfbridge.MakeResource(mainPkg, mainMod, "SyntheticsCreateVariableV2")},
+			"synthetics_create_location_v2":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SyntheticsCreateLocationV2")},
+			"synthetics_create_port_check_v2": {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SyntheticsCreatePortCheckV2")},
+			"synthetics_create_variable_v2":   {Tok: tfbridge.MakeResource(mainPkg, mainMod, "SyntheticsCreateVariableV2")},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
-			"synthetics_api_v2_check": 				{Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsApiV2Check")},
-			"synthetics_browser_v2_check": 			{Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsBrowserV2Check")},
-			"synthetics_check": 					{Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsCheck")},
-			"synthetics_devices_v2_check": 			{Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsDevicesV2Check")},
-			"synthetics_http_v2_check": 			{Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsHttpV2Check")},
-			"synthetics_location_v2_check": 		{Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsLocationV2Check")},
-			"synthetics_locations_v2_check": 		{Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsLocationsV2Check")},
-			"synthetics_port_v2_check": 			{Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsPortV2Check")},
-			"synthetics_variable_v2_check": 		{Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsVariableV2Check")},
-			"synthetics_variables_v2_check": 		{Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsVariablesV2Check")},
+			"synthetics_api_v2_check":       {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsApiV2Check")},
+			"synthetics_browser_v2_check":   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsBrowserV2Check")},
+			"synthetics_check":              {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsCheck")},
+			"synthetics_devices_v2_check":   {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsDevicesV2Check")},
+			"synthetics_http_v2_check":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsHttpV2Check")},
+			"synthetics_location_v2_check":  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsLocationV2Check")},
+			"synthetics_locations_v2_check": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsLocationsV2Check")},
+			"synthetics_port_v2_check":      {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsPortV2Check")},
+			"synthetics_variable_v2_check":  {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsVariableV2Check")},
+			"synthetics_variables_v2_check": {Tok: tfbridge.MakeDataSource(mainPkg, mainMod, "syntheticsVariablesV2Check")},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			// List any npm dependencies and their versions
@@ -187,7 +187,7 @@ func Provider() tfbridge.ProviderInfo {
 		},
 		Golang: &tfbridge.GolangInfo{
 			ImportBasePath: path.Join(
-				"github.com/yuft/pulumi-signalfx-synthetics/sdk/",
+				"github.com/displayr/pulumi-signalfx-synthetics/sdk/",
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
 				mainPkg,

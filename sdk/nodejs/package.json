@@ -3,12 +3,12 @@
     "version": "${VERSION}",
     "description": "A Pulumi package for creating and managing pulumi-signalfx-synthetics cloud resources.",
     "keywords": [
-        "yuft",
+        "displayr",
         "pulumi-signalfx-synthetics",
         "category/cloud"
     ],
     "homepage": "https://www.pulumi.com",
-    "repository": "https://github.com/yuft/pulumi-signalfx-synthetics",
+    "repository": "https://github.com/displayr/pulumi-signalfx-synthetics",
     "license": "Apache-2.0",
     "scripts": {
         "build": "tsc"

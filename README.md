@@ -57,8 +57,8 @@ From the templated repository:
    - rename folders in `provider/cmd` to `pulumi-resource-foo` and `pulumi-tfgen-foo`
    - replace dependencies in `provider/go.mod` to reflect your repository name
    - find and replace all instances of the boilerplate `pulumi-signalfx-synthetics` with the `NAME` of your provider.
-   - find and replace all instances of the boilerplate `yuft` with the `ORG` of your provider.
-   - replace all instances of the `github.com/yuft/pulumi-signalfx-synthetics` repository with the `REPOSITORY` location
+   - find and replace all instances of the boilerplate `displayr` with the `ORG` of your provider.
+   - replace all instances of the `github.com/displayr/pulumi-signalfx-synthetics` repository with the `REPOSITORY` location
 
    Note for third-party providers:
 
@@ -371,7 +371,7 @@ builds:
       - linux
     ignore: []
     ldflags:
-      - -X github.com/yuft/pulumi-signalfx-synthetics/provider/pkg/version.Version={{.Tag}}
+      - -X github.com/displayr/pulumi-signalfx-synthetics/provider/pkg/version.Version={{.Tag}}
     main: ./cmd/pulumi-resource-pulumi-signalfx-synthetics/
     sort: asc
     use: git

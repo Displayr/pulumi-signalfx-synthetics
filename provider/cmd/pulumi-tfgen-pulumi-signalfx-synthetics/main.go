@@ -15,9 +15,9 @@
 package main
 
 import (
+	synthetics "github.com/displayr/pulumi-signalfx-synthetics/provider"
+	"github.com/displayr/pulumi-signalfx-synthetics/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfgen"
-	synthetics "github.com/yuft/pulumi-signalfx-synthetics/provider"
-	"github.com/yuft/pulumi-signalfx-synthetics/provider/pkg/version"
 )
 
 func main() {

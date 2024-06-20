@@ -8,8 +8,8 @@ import (
 	"reflect"
 
 	"errors"
+	"github.com/displayr/pulumi-signalfx-synthetics/sdk/go/synthetics/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-	"github.com/yuft/pulumi-signalfx-synthetics/sdk/go/synthetics/internal"
 )
 
 // **Note**: This is a Rigor (Legacy) resource

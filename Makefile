@@ -2,8 +2,8 @@ PROJECT_NAME := pulumi-signalfx-synthetics Package
 
 SHELL            := /bin/bash
 PACK             := pulumi-signalfx-synthetics
-PROJECT          := github.com/yuft/pulumi-signalfx-synthetics
-NODE_MODULE_NAME := @yuft/${PACK}
+PROJECT          := github.com/displayr/pulumi-signalfx-synthetics
+NODE_MODULE_NAME := @displayr/${PACK}
 TF_NAME          := ${PACK}
 PROVIDER_PATH    := provider
 VERSION_PATH     := ${PROVIDER_PATH}/pkg/version.Version
