@@ -27,5 +27,5 @@ var pulumiSchema []byte
 
 func main() {
 	// Modify the path to point to the new provider
-	tfbridge.Main("synthetics", version.Version, synthetics.Provider(), pulumiSchema)
+	tfbridge.Main("pulumi-signalfx-synthetics", version.Version, synthetics.Provider(), pulumiSchema)
 }
