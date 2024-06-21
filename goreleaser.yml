@@ -5,7 +5,7 @@ before:
   hooks:
   - make tfgen
 builds:
-- binary: pulumi-resource-signalfx-synthetics
+- binary: pulumi-resource-synthetics
   dir: provider
   env:
   - CGO_ENABLED=0

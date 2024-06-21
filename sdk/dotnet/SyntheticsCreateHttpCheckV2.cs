@@ -90,6 +90,7 @@ namespace Pulumi.Synthetics
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                PluginDownloadURL = "https://github.com/Displayr/pulumi-signalfx-synthetics/releases/download/v0.0.11/",
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.

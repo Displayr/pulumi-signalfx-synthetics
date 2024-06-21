@@ -23,6 +23,7 @@
     },
     "pulumi": {
         "resource": true,
-        "name": "synthetics"
+        "name": "synthetics",
+        "server": "https://github.com/Displayr/pulumi-signalfx-synthetics/releases/download/v0.0.11/"
     }
 }
