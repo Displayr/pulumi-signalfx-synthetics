@@ -3,6 +3,7 @@ env:
   NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   PROVIDER: pulumi-signalfx-synthetics
+  TRAVIS_OS_NAME: linux
 jobs:
   build_sdk:
     name: build_sdk
