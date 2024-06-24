@@ -24,11 +24,11 @@ We showcase a Pulumi-owned provider based on an upstream provider named `terrafo
 Ensure the following tools are installed and present in your `$PATH`:
 
 - [`pulumictl`](https://github.com/pulumi/pulumictl#installation)
-- [Go 1.17](https://golang.org/dl/) or 1.latest
+- [Go 1.17](https://golang.org/dl/) or 1.latest. `brew install golangci-lint` is required.
 - [NodeJS](https://nodejs.org/en/) 14.x. We recommend using [nvm](https://github.com/nvm-sh/nvm) to manage NodeJS installations.
 - [Yarn](https://yarnpkg.com/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Python](https://www.python.org/downloads/) (called as `python3`). For recent versions of MacOS, the system-installed version is fine.
+- [Python](https://www.python.org/downloads/) (called as `python3`). For recent versions of MacOS, the system-installed version is fine. It also requires `brew install python-setuptools`
 - [.NET](https://dotnet.microsoft.com/download)
 
 ### Creating and Initializing the Repository
@@ -203,7 +203,7 @@ The following instructions all pertain to `provider/resources.go`, in the sectio
 1. Ensure the Golang SDK is a proper go module:
 
    ```bash
-   cd sdk && go mod tidy && cd -
+   cd sdk && go mod tidy -compat=1.17 && cd -
    ```
 
    This will pull in the correct dependencies in `sdk/go.mod` as well as setting the dependency tree in `sdk/go.sum`.
