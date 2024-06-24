@@ -53,7 +53,7 @@ export function getVersion(): string {
 
 /** @internal */
 export function resourceOptsDefaults(): any {
-    return { version: getVersion(), pluginDownloadURL: "https://github.com/Displayr/pulumi-signalfx-synthetics/releases/download/v0.0.11/" };
+    return { version: getVersion(), pluginDownloadURL: "https://github.com/Displayr/pulumi-signalfx-synthetics/releases/download/v0.0.12/" };
 }
 
 /** @internal */
