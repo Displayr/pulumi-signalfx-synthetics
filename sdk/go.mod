@@ -1,4 +1,4 @@
-module github.com/yuft/pulumi-signalfx-synthetics/sdk
+module github.com/displayr/pulumi-signalfx-synthetics/sdk
 
 go 1.17
 

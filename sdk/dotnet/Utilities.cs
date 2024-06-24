@@ -53,6 +53,7 @@ namespace Pulumi.Synthetics
         {
             var dst = src ?? new global::Pulumi.InvokeOptions{};
             dst.Version = src?.Version ?? Version;
+            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "https://github.com/Displayr/pulumi-signalfx-synthetics/releases/download/v0.0.12/";
             return dst;
         }
 

@@ -4,9 +4,9 @@
 package config
 
 import (
+	"github.com/displayr/pulumi-signalfx-synthetics/sdk/go/synthetics/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi/config"
-	"github.com/yuft/pulumi-signalfx-synthetics/sdk/go/synthetics/internal"
 )
 
 var _ = internal.GetEnvOrDefault

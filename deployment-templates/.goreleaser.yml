@@ -18,7 +18,7 @@ builds:
       - linux
     ldflags:
       # The line below MUST align with the module in current provider/go.mod
-      - -X github.com/yuft/pulumi-signalfx-synthetics/provider/pkg/version.Version={{.Tag }}
+      - -X github.com/displayr/pulumi-signalfx-synthetics/provider/pkg/version.Version={{.Tag }}
     main: ./cmd/pulumi-resource-pulumi-signalfx-synthetics/
 changelog:
   skip: true

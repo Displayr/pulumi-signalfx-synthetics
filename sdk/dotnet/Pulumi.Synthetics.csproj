@@ -2,12 +2,12 @@
 
   <PropertyGroup>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Authors>yuft</Authors>
-    <Company>yuft</Company>
+    <Authors>displayr</Authors>
+    <Company>displayr</Company>
     <Description>A Pulumi package for creating and managing pulumi-signalfx-synthetics cloud resources.</Description>
     <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <PackageProjectUrl>https://www.pulumi.com</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/yuft/pulumi-signalfx-synthetics</RepositoryUrl>
+    <RepositoryUrl>https://github.com/displayr/pulumi-signalfx-synthetics</RepositoryUrl>
     <PackageIcon>logo.png</PackageIcon>
 
     <TargetFramework>net6.0</TargetFramework>

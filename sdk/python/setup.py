@@ -23,10 +23,10 @@ setup(name='pulumi_synthetics',
       description="A Pulumi package for creating and managing pulumi-signalfx-synthetics cloud resources.",
       long_description=readme(),
       long_description_content_type='text/markdown',
-      keywords='yuft pulumi-signalfx-synthetics category/cloud',
+      keywords='displayr pulumi-signalfx-synthetics category/cloud',
       url='https://www.pulumi.com',
       project_urls={
-          'Repository': 'https://github.com/yuft/pulumi-signalfx-synthetics'
+          'Repository': 'https://github.com/displayr/pulumi-signalfx-synthetics'
       },
       license='Apache-2.0',
       packages=find_packages(),

@@ -17,9 +17,9 @@ package main
 import (
 	_ "embed"
 
+	synthetics "github.com/displayr/pulumi-signalfx-synthetics/provider"
+	"github.com/displayr/pulumi-signalfx-synthetics/provider/pkg/version"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	synthetics "github.com/yuft/pulumi-signalfx-synthetics/provider"
-	"github.com/yuft/pulumi-signalfx-synthetics/provider/pkg/version"
 )
 
 //go:embed schema.json
@@ -27,5 +27,5 @@ var pulumiSchema []byte
 
 func main() {
 	// Modify the path to point to the new provider
-	tfbridge.Main("synthetics", version.Version, synthetics.Provider(), pulumiSchema)
+	tfbridge.Main("pulumi-signalfx-synthetics", version.Version, synthetics.Provider(), pulumiSchema)
 }
