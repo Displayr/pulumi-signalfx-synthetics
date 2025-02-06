@@ -44,16 +44,16 @@ namespace Pulumi.Synthetics
         [global::System.Obsolete("Please use WithDefaults instead")]
         public static global::Pulumi.InvokeOptions WithVersion(this global::Pulumi.InvokeOptions? options)
         {
-            var dst = options ?? new global::Pulumi.InvokeOptions{};
+            var dst = options ?? new global::Pulumi.InvokeOptions { };
             dst.Version = options?.Version ?? Version;
             return dst;
         }
 
         public static global::Pulumi.InvokeOptions WithDefaults(this global::Pulumi.InvokeOptions? src)
         {
-            var dst = src ?? new global::Pulumi.InvokeOptions{};
+            var dst = src ?? new global::Pulumi.InvokeOptions { };
             dst.Version = src?.Version ?? Version;
-            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "https://github.com/Displayr/pulumi-signalfx-synthetics/releases/download/v0.0.12/";
+            dst.PluginDownloadURL = src?.PluginDownloadURL ?? "https://github.com/Displayr/pulumi-signalfx-synthetics/releases/download/v0.2.0/";
             return dst;
         }
 
