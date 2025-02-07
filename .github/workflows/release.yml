@@ -4,6 +4,7 @@ env:
   NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
   PROVIDER: pulumi-signalfx-synthetics
   TRAVIS_OS_NAME: linux
+  DOTNET_SYSTEM_GLOBALIZATION_INVARIANT: 1
 jobs:
   build_sdk:
     name: build_sdk
