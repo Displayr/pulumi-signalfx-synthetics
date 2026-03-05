@@ -18,5 +18,5 @@ jobs:
       workflow-owner-repo: ${{ vars.WORKFLOW_OWNER_REPO || github.repository }}
       circleci-project-slug: ${{ vars.CIRCLECI_PROJECT_SLUG || '' }}
     secrets:
-      github-token: ${{ secrets.GITHUB_TOKEN }}
-      circleci-token: ${{ secrets.CIRCLECI_TOKEN }}
+      github_token: ${{ secrets.GITHUB_TOKEN }}
+      circleci_token: ${{ secrets.CIRCLECI_TOKEN }}
