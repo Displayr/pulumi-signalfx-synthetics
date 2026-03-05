@@ -32,11 +32,13 @@ jobs:
         run: |
           set -euo pipefail
 
-          echo "workflow_url=" >> "$GITHUB_OUTPUT"
-          echo "circleci_url=" >> "$GITHUB_OUTPUT"
-          echo "notes=" >> "$GITHUB_OUTPUT"
-          echo "merge_sha=n/a" >> "$GITHUB_OUTPUT"
-          echo "base_ref=n/a" >> "$GITHUB_OUTPUT"
+          {
+            echo "workflow_url="
+            echo "circleci_url="
+            echo "notes="
+            echo "merge_sha=n/a"
+            echo "base_ref=n/a"
+          } >> "$GITHUB_OUTPUT"
 
           # Validate event values before using them in API requests.
           if [[ "${RAW_BASE_REF}" != "main" && "${RAW_BASE_REF}" != "master" ]]; then
@@ -57,43 +59,7 @@ jobs:
           workflow_url=""
           while [[ $attempt -le ${MAX_ATTEMPTS} ]]; do
             runs_json="$(gh api "/repos/${WORKFLOW_OWNER_REPO}/actions/runs?event=push&head_sha=${MERGE_SHA}&per_page=50" 2>/dev/null || true)"
-            workflow_url="$(RUNS_JSON="${runs_json}" BASE_REF="${BASE_REF}" WORKFLOW_NAME_REGEX="${WORKFLOW_NAME_REGEX}" python3 - <<'PY_INNER'
-import json
-import os
-import re
-
-raw = os.environ.get("RUNS_JSON") or "{}"
-base_ref = os.environ.get("BASE_REF") or ""
-name_re = os.environ.get("WORKFLOW_NAME_REGEX") or "pulumi|deploy|build"
-
-try:
-    data = json.loads(raw)
-except Exception:
-    print("")
-    raise SystemExit(0)
-
-runs = data.get("workflow_runs") or []
-if not runs:
-    print("")
-    raise SystemExit(0)
-
-def branch_ok(run):
-    branch = (run.get("head_branch") or "")
-    return (not base_ref) or (branch == base_ref)
-
-regex = re.compile(name_re, re.IGNORECASE)
-filtered = [r for r in runs if branch_ok(r)]
-preferred = [r for r in filtered if regex.search(r.get("name") or "")]
-
-candidate = None
-if preferred:
-    candidate = sorted(preferred, key=lambda x: x.get("run_number", 0), reverse=True)[0]
-elif filtered:
-    candidate = sorted(filtered, key=lambda x: x.get("run_number", 0), reverse=True)[0]
-
-print((candidate or {}).get("html_url", ""))
-PY_INNER
-)"
+            workflow_url="$(RUNS_JSON="${runs_json}" BASE_REF="${BASE_REF}" WORKFLOW_NAME_REGEX="${WORKFLOW_NAME_REGEX}" python3 .github/scripts/resolve_workflow_url.py)"
             if [[ -n "${workflow_url}" ]]; then
               break
             fi
@@ -119,31 +85,7 @@ PY_INNER
           circleci_url=""
           while [[ $attempt -le ${MAX_ATTEMPTS} ]]; do
             pipelines_json="$(curl -fsSL -H "Circle-Token: ${CIRCLECI_TOKEN}" "https://circleci.com/api/v2/project/gh/${circleci_slug}/pipeline?branch=${BASE_REF}" 2>/dev/null || true)"
-            circleci_url="$(PIPELINES_JSON="${pipelines_json}" CIRCLECI_SLUG="${circleci_slug}" MERGE_SHA="${MERGE_SHA}" python3 - <<'PY_INNER'
-import json
-import os
-
-raw = os.environ.get("PIPELINES_JSON") or "{}"
-slug = os.environ.get("CIRCLECI_SLUG") or ""
-merge_sha = os.environ.get("MERGE_SHA") or ""
-
-try:
-    data = json.loads(raw)
-except Exception:
-    print("")
-    raise SystemExit(0)
-
-for item in data.get("items") or []:
-    vcs = item.get("vcs") or {}
-    if (vcs.get("revision") or "") == merge_sha:
-        number = item.get("number")
-        if number is not None:
-            print(f"https://app.circleci.com/pipelines/github/{slug}/{number}")
-            raise SystemExit(0)
-
-print("")
-PY_INNER
-)"
+            circleci_url="$(PIPELINES_JSON="${pipelines_json}" CIRCLECI_SLUG="${circleci_slug}" MERGE_SHA="${MERGE_SHA}" python3 .github/scripts/resolve_circleci_url.py)"
             if [[ -n "${circleci_url}" ]]; then
               break
             fi
