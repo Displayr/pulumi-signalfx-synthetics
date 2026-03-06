@@ -1,6 +1,7 @@
 # Terraform Bridge Provider Boilerplate
 
 This repository contains boilerplate code for building a new Pulumi provider which wraps an existing Terraform provider.
+It also includes repository automation for post-merge workflow link comments.
 
 ## Background
 
