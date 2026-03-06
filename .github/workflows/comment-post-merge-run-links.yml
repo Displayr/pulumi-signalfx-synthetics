@@ -13,10 +13,15 @@ jobs:
   comment-run-links:
     uses: Displayr/gh-workflows/.github/workflows/comment-post-merge-run-links.yml@main
     with:
-      runs-on: ${{ vars.GHA_RUNS_ON_JSON || '["self-hosted","linux"]' }}
-      workflow-name-regex: ${{ vars.WORKFLOW_NAME_REGEX || 'pulumi|deploy|build' }}
-      workflow-owner-repo: ${{ vars.WORKFLOW_OWNER_REPO || github.repository }}
-      circleci-project-slug: ${{ vars.CIRCLECI_PROJECT_SLUG || '' }}
+      runs_on: ${{ vars.GHA_RUNS_ON_JSON || '["self-hosted","linux"]' }}
+      pr_number: ${{ github.event.pull_request.number }}
+      merge_sha: ${{ github.event.pull_request.merge_commit_sha }}
+      base_ref: ${{ github.event.pull_request.base.ref }}
+      repo_owner: ${{ github.repository_owner }}
+      repo_name: ${{ github.event.repository.name }}
+      workflow_name_regex: ${{ vars.WORKFLOW_NAME_REGEX || 'pulumi|deploy|build' }}
+      workflow_owner_repo: ${{ vars.WORKFLOW_OWNER_REPO || github.repository }}
+      circleci_project_slug: ${{ vars.CIRCLECI_PROJECT_SLUG || '' }}
     secrets:
       github_token: ${{ secrets.GITHUB_TOKEN }}
       circleci_token: ${{ secrets.CIRCLECI_TOKEN }}
