@@ -15,15 +15,17 @@ jobs:
     if: github.event.pull_request.merged == true && (github.event.pull_request.base.ref == 'main' || github.event.pull_request.base.ref == 'master')
     runs-on: ${{ fromJSON(vars.GHA_RUNS_ON_JSON || '["self-hosted","linux"]') }}
     steps:
-      - uses: Displayr/gh-workflows/.github/actions/comment-post-merge-run-links@758984013de278ee8fef891859a27dc03a410ff7
+      - uses: Displayr/gh-workflows/.github/actions/comment-post-merge-run-links@8357b41086310ffc62e8ad42abe94a498e736aae
         with:
           gh_token: ${{ secrets.GITHUB_TOKEN }}
-          circleci_token: ${{ secrets.CIRCLECI_TOKEN }}
           pr_number: ${{ github.event.pull_request.number }}
           merge_sha: ${{ github.event.pull_request.merge_commit_sha }}
           base_ref: ${{ github.event.pull_request.base.ref }}
           repo_owner: ${{ github.repository_owner }}
           repo_name: ${{ github.event.repository.name }}
-          workflow_name_regex: ${{ vars.WORKFLOW_NAME_REGEX || 'pulumi|deploy|build' }}
+          enable_workflow_link: 'true'
+          enable_circleci_link: 'false'
+          enable_pulumi_link: 'false'
+          workflow_name_regex: ${{ vars.WORKFLOW_NAME_REGEX || 'release|lint' }}
           workflow_owner_repo: ${{ vars.WORKFLOW_OWNER_REPO || github.repository }}
-          circleci_project_slug: ${{ vars.CIRCLECI_PROJECT_SLUG || '' }}
+          workflow_link_label: 'GitHub Actions'
