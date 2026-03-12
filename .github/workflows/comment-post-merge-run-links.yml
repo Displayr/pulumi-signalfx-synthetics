@@ -6,22 +6,24 @@ on:
       - closed
 
 permissions:
+  actions: read
   contents: read
   pull-requests: write
 
 jobs:
   comment-run-links:
-    uses: Displayr/gh-workflows/.github/workflows/comment-post-merge-run-links.yml@main
-    with:
-      runs_on: ${{ vars.GHA_RUNS_ON_JSON || '["self-hosted","linux"]' }}
-      pr_number: ${{ github.event.pull_request.number }}
-      merge_sha: ${{ github.event.pull_request.merge_commit_sha }}
-      base_ref: ${{ github.event.pull_request.base.ref }}
-      repo_owner: ${{ github.repository_owner }}
-      repo_name: ${{ github.event.repository.name }}
-      workflow_name_regex: ${{ vars.WORKFLOW_NAME_REGEX || 'pulumi|deploy|build' }}
-      workflow_owner_repo: ${{ vars.WORKFLOW_OWNER_REPO || github.repository }}
-      circleci_project_slug: ${{ vars.CIRCLECI_PROJECT_SLUG || '' }}
-    secrets:
-      github_token: ${{ secrets.GITHUB_TOKEN }}
-      circleci_token: ${{ secrets.CIRCLECI_TOKEN }}
+    if: github.event.pull_request.merged == true && (github.event.pull_request.base.ref == 'main' || github.event.pull_request.base.ref == 'master')
+    runs-on: ${{ fromJSON(vars.GHA_RUNS_ON_JSON || '["self-hosted","linux"]') }}
+    steps:
+      - uses: Displayr/gh-workflows/.github/actions/comment-post-merge-run-links@758984013de278ee8fef891859a27dc03a410ff7
+        with:
+          gh_token: ${{ secrets.GITHUB_TOKEN }}
+          circleci_token: ${{ secrets.CIRCLECI_TOKEN }}
+          pr_number: ${{ github.event.pull_request.number }}
+          merge_sha: ${{ github.event.pull_request.merge_commit_sha }}
+          base_ref: ${{ github.event.pull_request.base.ref }}
+          repo_owner: ${{ github.repository_owner }}
+          repo_name: ${{ github.event.repository.name }}
+          workflow_name_regex: ${{ vars.WORKFLOW_NAME_REGEX || 'pulumi|deploy|build' }}
+          workflow_owner_repo: ${{ vars.WORKFLOW_OWNER_REPO || github.repository }}
+          circleci_project_slug: ${{ vars.CIRCLECI_PROJECT_SLUG || '' }}
